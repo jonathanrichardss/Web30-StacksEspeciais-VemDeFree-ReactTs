@@ -5,55 +5,33 @@ import CardJob from "../../components/CardJob/CardJob";
 import { SearchByCitySection } from "../../components/SearchByCitySection/SearchByCitySection";
 import { useEffect, useState } from "react";
 import React from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-const jobsData = [
-  {
-    id: 1,
-    title: "Job1",
-    description: "Job Desc1",
-    required_experience: "Required Experience1",
-  },
-  {
-    id: 2,
-    title: "Job1",
-    description: "Job Desc1",
-    required_experience: "Required Experience1",
-  },
-  {
-    id: 3,
-    title: "Job1",
-    description: "Job Desc1",
-    required_experience: "Required Experience1",
-  },
-  {
-    id: 4,
-    title: "Job1",
-    description: "Job Desc1",
-    required_experience: "Required Experience1",
-  },
-  {
-    id: 5,
-    title: "Job1",
-    description: "Job Desc1",
-    required_experience: "Required Experience1",
-  },
-  {
-    id: 6,
-    title: "Job1",
-    description: "Job Desc1",
-    required_experience: "Required Experience1",
-  },
-];
+const api = axios.create();
 
 export default function Home() {
   const [items, setItems] = useState([]);
   const [jobsDataTest, setJobsData] = useState([]);
+  const navigate = useNavigate();
+
+  function handleClick(e: any) {
+    console.log("funcionando");
+    navigate("/jobs");
+    return e;
+  }
 
   useEffect(() => {
     async function getJobsData() {
-      const response = await fetch("http://localhost:8080/jobs/listar-todos");
+      const response = await api.get("http://localhost:8080/jobs/list", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      });
 
-      const responseJSON = await response.json();
+      const responseJSON = await response.data;
 
       setItems(responseJSON);
     }
@@ -76,7 +54,11 @@ export default function Home() {
               key={mapped.id}
               title={mapped.title}
               description={mapped.description}
-              required_experience={mapped.required_experience}
+              requiredExperience={mapped.requiredExperience}
+              company={mapped.company}
+              city={mapped.city}
+              paymentValue={mapped.paymentValue}
+              click={() => handleClick(mapped.id)}
             />
           ))}
         </div>

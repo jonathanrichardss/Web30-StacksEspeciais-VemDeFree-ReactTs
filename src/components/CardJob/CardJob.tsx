@@ -1,25 +1,32 @@
-import { CardJobStyle } from "./styles"
-
-
+import { Component, ReactEventHandler } from "react";
+import { CardJobStyle } from "./styles";
 
 interface JobProps {
-    title: string,
-    description: string,
-    required_experience: string
+  title: string;
+  description: string;
+  requiredExperience: string;
+  company: string;
+  city: string;
+  paymentValue: number;
+  click: () => any;
 }
 
-
-
 export default function CardJob(props: JobProps) {
-
-
-    return (
-        <CardJobStyle>
-            <div>
-                <h3>Title: {props.title}</h3>
-                <p>Description: {props.description}</p>
-                <p>Experience:  {props.required_experience}</p>
-            </div>
-        </CardJobStyle>
-    )
+  return (
+    <CardJobStyle>
+      <div className="insideCard">
+        <div className="textPane">
+          <h3>{props.title}</h3>
+          <p>Descrição: {props.description}</p>
+          <p>Nível De Experiência: {props.requiredExperience}</p>
+          <p>Empresa: {props.company}</p>
+          <p>Cidade: {props.city}</p>
+          <p>Valor: R${props.paymentValue}</p>
+        </div>
+        <div className="buttonPane">
+          <button onClick={() => props.click()}>Quero free</button>
+        </div>
+      </div>
+    </CardJobStyle>
+  );
 }

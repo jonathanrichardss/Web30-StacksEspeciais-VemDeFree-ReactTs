@@ -1,62 +1,56 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { SignInStyle } from "./styles";
-import { Link } from "react-router-dom";
-import { User } from "../../components/User/User";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/Auth/AuthContext";
+import HomeBar from "../../components/HomeBar/HomeBar";
+import { useApi } from "../../hooks/useApi";
 
 export function SignIn() {
-  const [username, setUserName] = useState("");
+  const auth = useContext(AuthContext);
+  const navigate = useNavigate();
+  const api = useApi();
+
+  const [email, setEmail] = useState("Sua jornada começa aqui.");
   const [password, setPassword] = useState("");
-  const [autentication, setAutentication] = useState({});
+  const [loginInvalido, setLoginInvalido] = useState("");
 
-  function getAutentication(username: String, password: String) {
-    fetch("http://localhost:8080/users").then((res) => res.json());
-  }
-
-  useEffect(() => {
-    async function getAutentication(username: String, password: String) {
-      const req = await fetch("http://localhost:8080/users/users/list-all");
-
-      const responseJSON = await req.json();
-
-      setAutentication(responseJSON);
+  const handleLogin = async () => {
+    if (email && password) {
+      const isLogged = await auth.signin(email, password);
+      if (isLogged) {
+        navigate("/dashboard");
+      } else {
+        setLoginInvalido("Usuário e/ou senha incorretos, tente novamente.");
+      }
     }
-
-    if (autentication.username) {
-      return;
-    }
-    getAutentication(username, password);
-    console.log("Roda a cada renderização.");
-    console.log(getAutentication);
-  }, [autentication]);
-
+  };
   return (
     <SignInStyle>
+      <h1>{email}</h1>
       <div className="login-box">
-        <label htmlFor="username"></label>
+        <label htmlFor="email"></label>
         <input
           type="text"
-          id="username"
-          placeholder="Usuário"
-          onChange={(e) => setUserName(e.target.value)}
+          id="email"
+          placeholder="E-mail"
+          onChange={(e) => setEmail(e.target.value)}
         />
         <label htmlFor="password"></label>
         <input
-          type="text"
+          type="password"
           id="password"
           placeholder="Senha"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button
-          type="submit"
-          onSubmit={() => getAutentication(username, password)}
-        >
+        <button type="submit" onClick={() => handleLogin()}>
           Entrar
         </button>
+        <p>{loginInvalido}</p>
         <Link to="/signup">
           <p>Novo(a) aqui? Cadastre-se!</p>
         </Link>
-        <h3>{username}</h3>
       </div>
+      <HomeBar click={() => auth.signout()} />
     </SignInStyle>
   );
 }

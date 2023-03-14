@@ -11,13 +11,19 @@ export const SignInStyle = styled.div`
 
   .login-box {
     width: 300px;
-    height: 250px;
+    height: 300px;
     background-color: white;
     box-shadow: 3;
+    border-radius: 8px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+
+  h1 {
+    color: white;
+    margin-bottom: 70px;
   }
 
   input {

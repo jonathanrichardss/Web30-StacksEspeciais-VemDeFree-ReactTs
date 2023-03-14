@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { User } from "../../components/User/User";
 import { SignUpStyle } from "./styles";
 import { v4 as uuidv4, v4, V4Options } from "uuid";
+import { useNavigate } from "react-router-dom";
+import HomeBar from "../../components/HomeBar/HomeBar";
+import { useApi } from "../../hooks/useApi";
+import { AuthContext } from "../../contexts/Auth/AuthContext";
 
 export function SignUp() {
   const [username, setUserName] = useState("");
@@ -14,6 +18,10 @@ export function SignUp() {
   const [idProfile, setIdProfile] = useState("");
   const [isActive, setIsActive] = useState(false);
   const [applications, setApplications] = useState<String[]>([]);
+  const navigate = useNavigate();
+  const api = useApi();
+
+  const auth = useContext(AuthContext);
 
   let id = uuidv4();
 
@@ -30,7 +38,6 @@ export function SignUp() {
     isActive: Boolean,
     applications: String[]
   ) {
-    id = uuidv4().toString();
     let user = new User(
       id,
       name,
@@ -49,9 +56,7 @@ export function SignUp() {
   }
 
   function setUserData(objeto: User) {
-    localStorage.setItem(objeto.id.toString(), JSON.stringify(objeto));
-
-    fetch("http://localhost:8080/users/create/user", {
+    fetch("http://localhost:8080/users/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -161,6 +166,7 @@ export function SignUp() {
         </button>
         <h3>{username}</h3>
       </div>
+      <HomeBar click={() => auth.signout()} />
     </SignUpStyle>
   );
 }

@@ -10,7 +10,9 @@ export function Welcome() {
         <Link to="/signin">
           <button>Quero anunciar!</button>
         </Link>
-        <button>Quero Free!</button>
+        <Link to="/jobs">
+          <button>Quero Free!</button>
+        </Link>
       </div>
     </WelcomeSection>
   );
