@@ -49,9 +49,9 @@ export default function Home() {
         <h1>Free's na sua região:</h1>
         <h3>{jobsDataTest.toString()}</h3>
         <div className="show-jobs-div">
-          {items.map((mapped) => (
+          {items.map((mapped: any) => (
             <CardJob
-              key={mapped.id}
+              key={mapped}
               title={mapped.title}
               description={mapped.description}
               requiredExperience={mapped.requiredExperience}

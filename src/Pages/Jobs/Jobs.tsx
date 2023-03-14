@@ -58,7 +58,7 @@ export function Jobs() {
   }
 
   async function getCdJobData(id: String) {
-    items.forEach((mapped) => {
+    items.forEach((mapped: any) => {
       if (id === mapped.id) {
         setJob(mapped);
         setIsHidden(false);
@@ -88,7 +88,7 @@ export function Jobs() {
         <h1>Free's pertinho de você</h1>
         <div className="userBox">
           <div className="show-jobs-div">
-            {items.map((mapped) => (
+            {items.map((mapped: any) => (
               <CardJob
                 key={mapped.id}
                 title={mapped.title}
@@ -114,7 +114,7 @@ export function Jobs() {
               <div className="buttonPane">
                 <button
                   hidden={isHidden}
-                  onClick={() => jobApplicationFactory(user, job!, "")}
+                  onClick={() => jobApplicationFactory(user!, job!, "")}
                 >
                   Inscrever-se
                 </button>
