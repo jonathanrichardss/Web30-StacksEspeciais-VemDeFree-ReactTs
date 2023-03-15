@@ -7,7 +7,7 @@ interface HomeBarProps {
 
 export default function HomeBar(props: HomeBarProps) {
   return (
-    <HomeBarStyle>
+    <HomeBarStyle className="homeBar">
       <Link to={"/dashboard"}>
         <button>Meu Perfil</button>
       </Link>

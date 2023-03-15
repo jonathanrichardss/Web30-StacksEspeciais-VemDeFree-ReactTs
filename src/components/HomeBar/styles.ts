@@ -10,6 +10,7 @@ export const HomeBarStyle = styled.div`
   font-size: 25px;
   margin-top: 35px;
   background-color: #ffff;
+  position: static;
 
   button {
     width: 170px;

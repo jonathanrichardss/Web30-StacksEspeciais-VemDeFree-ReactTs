@@ -19,6 +19,7 @@ export const SignInStyle = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 90px;
   }
 
   h1 {
@@ -43,6 +44,14 @@ export const SignInStyle = styled.div`
     font-weight: 800;
     font-size: 13px;
     color: black;
+  }
+
+  .homeBar {
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    position: fixed;
+    height: 50px;
   }
 `;
 

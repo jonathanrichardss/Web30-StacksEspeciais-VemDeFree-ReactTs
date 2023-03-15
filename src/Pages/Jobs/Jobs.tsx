@@ -94,7 +94,7 @@ export function Jobs() {
                 title={mapped.title}
                 description={mapped.description}
                 requiredExperience={mapped.requiredExperience}
-                company={mapped.company}
+                company={mapped.companyName}
                 city={mapped.city}
                 paymentValue={mapped.paymentValue}
                 click={() => getCdJobData(mapped.id)}

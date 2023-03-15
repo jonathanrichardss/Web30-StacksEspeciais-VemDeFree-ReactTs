@@ -52,6 +52,7 @@ export function SignUp() {
       applications
     );
     setUserData(user);
+    navigate("/signin");
     console.log(user);
   }
 
