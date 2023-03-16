@@ -71,8 +71,8 @@ export function Jobs() {
 
   async function setApplicationData(objeto: CdJobApplication) {
     await fetch(`${process.env.PROD_HOST}applications/create`, {
-      method: "POST",
-      headers: {
+      "method": "POST",
+      "headers": {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
         "Authorization": `${process.env.SECRET_TOKEN}`,

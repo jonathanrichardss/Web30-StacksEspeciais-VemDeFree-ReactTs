@@ -52,8 +52,8 @@ export function UserPage() {
 
   async function setCdJobData(objeto: CdJob) {
     await fetch(`${process.env.PROD_HOST}jobs/create`, {
-      method: "POST",
-      headers: {
+      "method": "POST",
+     "headers": {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
         "Authorization": `${process.env.SECRET_TOKEN}`
