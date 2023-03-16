@@ -23,7 +23,7 @@ export default function Home() {
 
   useEffect(() => {
     async function getJobsData() {
-      const response = await api.get("http://localhost:8080/jobs/list", {
+      const response = await api.get(`${process.env.PROD_HOST}jobs/list`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

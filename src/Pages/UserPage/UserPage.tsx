@@ -51,11 +51,12 @@ export function UserPage() {
   }
 
   async function setCdJobData(objeto: CdJob) {
-    await fetch("http://localhost:8080/jobs/create", {
+    await fetch(`${process.env.PROD_HOST}jobs/create`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
+        "Authorization": `${process.env.PROD_HOST}`
       },
       body: JSON.stringify(objeto),
     }).then(() => {
