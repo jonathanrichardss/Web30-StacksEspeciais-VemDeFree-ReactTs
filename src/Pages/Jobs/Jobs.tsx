@@ -23,7 +23,7 @@ export function Jobs() {
 
   useEffect(() => {
     async function getJobsData() {
-      const response = await fetch("http://localhost:8080/jobs/list", {
+      const response = await fetch("${PROD_HOST}jobs/list", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -70,11 +70,12 @@ export function Jobs() {
   }
 
   async function setApplicationData(objeto: CdJobApplication) {
-    await fetch("http://localhost:8080/applications/create", {
+    await fetch(`${process.env.PROD_HOST}applications/create`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
+        "Authorization": `${process.env.PROD_HOST}`,
       },
       body: JSON.stringify(objeto),
     }).then(() => {

@@ -57,10 +57,11 @@ export function SignUp() {
   }
 
   function setUserData(objeto: User) {
-    fetch("http://localhost:8080/users/create", {
+    fetch(`${process.env.PROD_HOST}users/create`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `${process.env.SECRET_TOKEN}`,
         "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify(objeto),

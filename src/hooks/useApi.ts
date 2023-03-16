@@ -1,11 +1,13 @@
 import axios from "axios";
 
+
+
 const headers = new Headers();
 headers.set("Access-Control-Allow-Origin", "*");
 
 const api = axios.create({
-  baseURL: "http://localhost:8080",
-  headers: {
+  "baseURL": "https://projetointegstackfreebackend-production.up.railway.app/",
+  "headers": {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Headers": "Authorization",
     "Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, PATCH, DELETE",
