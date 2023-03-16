@@ -23,7 +23,7 @@ export function Jobs() {
 
   useEffect(() => {
     async function getJobsData() {
-      const response = await fetch("${PROD_HOST}jobs/list", {
+      const response = await fetch(`${process.env.PROD_HOST}jobs/list`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -75,7 +75,7 @@ export function Jobs() {
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
-        "Authorization": `${process.env.PROD_HOST}`,
+        "Authorization": `${process.env.SECRET_TOKEN}`,
       },
       body: JSON.stringify(objeto),
     }).then(() => {

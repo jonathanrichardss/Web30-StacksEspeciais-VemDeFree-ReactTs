@@ -56,7 +56,7 @@ export function UserPage() {
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
-        "Authorization": `${process.env.PROD_HOST}`
+        "Authorization": `${process.env.SECRET_TOKEN}`
       },
       body: JSON.stringify(objeto),
     }).then(() => {
