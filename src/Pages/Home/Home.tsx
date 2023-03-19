@@ -23,7 +23,7 @@ export default function Home() {
 
   useEffect(() => {
     async function getJobsData() {
-      const response = await api.get(`${import.meta.env.VITE_PROD_URL}jobs/list`, {
+      const response = await api.get(`${import.meta.env.VITE_PROD_HOST}jobs/list`, {
         "method": "GET",
         "headers": {
           "Content-Type": "application/json",

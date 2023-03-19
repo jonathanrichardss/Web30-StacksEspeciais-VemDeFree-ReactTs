@@ -5,4 +5,4 @@
 # React com Typescript (Frontend)
 # Java com Spring Boot (Backend) | CRUD
 # MySQL
-# Hospedagem na Cloud via Railway app (Utilizam a AWS)
+# Hospedagem do banco e backend na Cloud via Railway app (Utilizam a AWS) e do Frontend na Vercel

@@ -6,7 +6,7 @@ const headers = new Headers();
 headers.set("Access-Control-Allow-Origin", "*");
 
 const api = axios.create({
-  "baseURL": "https://projetointegstackfreebackend-production.up.railway.app/",
+  "baseURL": `${import.meta.env.VITE_PROD_HOST}`,
   "headers": {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Headers": "Authorization",
