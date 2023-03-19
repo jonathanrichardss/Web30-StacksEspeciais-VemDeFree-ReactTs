@@ -23,7 +23,7 @@ export function Jobs() {
 
   useEffect(() => {
     async function getJobsData() {
-      const response = await fetch(`${process.env.PROD_HOST}jobs/list`, {
+      const response = await fetch(`${import.meta.env.VITE_PROD_HOST}jobs/list`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -38,6 +38,7 @@ export function Jobs() {
     getJobsData();
     console.log("Roda a cada renderização.");
     console.log(items);
+    console.log(process.env.NODE_ENV);
   }, []);
 
   function jobApplicationFactory(
@@ -70,12 +71,12 @@ export function Jobs() {
   }
 
   async function setApplicationData(objeto: CdJobApplication) {
-    await fetch(`${process.env.PROD_HOST}applications/create`, {
-      method: "POST",
-      headers: {
+    await fetch(`${import.meta.env.VITE_PROD_HOST}applications/create`, {
+      "method": "POST",
+      "headers": {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
-        "Authorization": `${process.env.SECRET_TOKEN}`,
+        "Authorization": `${import.meta.env.SECRET_TOKEN}`,
       },
       body: JSON.stringify(objeto),
     }).then(() => {
