@@ -23,7 +23,7 @@ export default function Home() {
 
   useEffect(() => {
     async function getJobsData() {
-      const response = await api.get(`${process.env.PROD_HOST}jobs/list`, {
+      const response = await api.get(`${import.meta.env.VITE_PROD_URL}jobs/list`, {
         "method": "GET",
         "headers": {
           "Content-Type": "application/json",
@@ -37,6 +37,7 @@ export default function Home() {
     }
     getJobsData();
     console.log("Roda a cada renderização.");
+    console.log(import.meta.env);
     console.log(jobsDataTest);
   }, [jobsDataTest]);
 

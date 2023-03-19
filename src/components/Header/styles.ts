@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 export const HeaderStyle = styled.div`
-  width: 80vw;
+  width: 88vw;
   height: 28.4rem;
   display: flex;
   flex-direction: row;
   margin: 20px;
   margin-left: 0;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 
   h1 {
     font-size: 52px;
@@ -23,18 +23,18 @@ export const HeaderStyle = styled.div`
   }
 
   .lft-hdr {
-    width: 50%;
+    width: 35%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
     margin-right: 50px;
     margin-left: 0;
     text-align: center;
   }
 
   .rgt-hdr {
-    width: 35%;
+    max-width: 50%;
     height: 450px;
     display: flex;
     flex-direction: column;

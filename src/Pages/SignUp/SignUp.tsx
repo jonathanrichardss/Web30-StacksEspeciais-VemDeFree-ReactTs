@@ -57,11 +57,11 @@ export function SignUp() {
   }
 
   function setUserData(objeto: User) {
-    fetch(`${process.env.PROD_HOST}users/create`, {
+    fetch(`${import.meta.env.VITE_PROD_HOST}users/create`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `${process.env.SECRET_TOKEN}`,
+        "Authorization": `${import.meta.env.SECRET_TOKEN}`,
         "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify(objeto),
