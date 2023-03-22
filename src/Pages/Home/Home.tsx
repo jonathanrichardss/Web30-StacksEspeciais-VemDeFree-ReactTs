@@ -56,7 +56,7 @@ export default function Home() {
               title={mapped.title}
               description={mapped.description}
               requiredExperience={mapped.requiredExperience}
-              company={mapped.company}
+              companyName={mapped.companyName}
               city={mapped.city}
               paymentValue={mapped.paymentValue}
               click={() => handleClick(mapped.id)}

@@ -5,7 +5,7 @@ interface JobProps {
   title: string;
   description: string;
   requiredExperience: string;
-  company: string;
+  companyName: string;
   city: string;
   paymentValue: number;
   click: () => any;
@@ -19,7 +19,7 @@ export default function CardJob(props: JobProps) {
           <h3>{props.title}</h3>
           <p>Descrição: {props.description}</p>
           <p>Nível De Experiência: {props.requiredExperience}</p>
-          <p>Empresa: {props.company}</p>
+          <p>Empresa: {props.companyName}</p>
           <p>Cidade: {props.city}</p>
           <p>Valor: R${props.paymentValue}</p>
         </div>

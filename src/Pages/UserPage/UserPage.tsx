@@ -102,7 +102,7 @@ export function UserPage() {
             />
             <input
               type="text"
-              id="companyName"
+              id="company"
               placeholder="Nome da empresa"
               onChange={(e) => {
                 setCompanyName(e.target.value);
@@ -154,7 +154,6 @@ export function UserPage() {
             <h3>{title}</h3>
           </div>
         </div>
-        <h3>{timeJob}</h3>
       </div>
       <HomeBar click={() => auth.signout()} />
     </SignUpStyle>
